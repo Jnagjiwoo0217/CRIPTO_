@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>장지우 | 포트폴리오</title>
+<meta name="description" content="레저해양스포츠학과 장지우의 포트폴리오. 건강운동관리사와 재활치료사를 목표로 합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F8F7; --mist:#E4ECEF; --sea:#0F2A3D; --blue:#2457C5; --red:#D8383A;
+  --text:#1B2A35; --muted:#52646F; --line:#CFDAE0;
+  --display:"Black Han Sans","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:72px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{font-family:var(--body);background:var(--paper);color:var(--text);line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1080px,100% - 40px);margin-inline:auto}
+
+/* 헤더 */
+header{position:sticky;top:0;z-index:20;background:rgba(246,248,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--display);font-size:1.3rem;text-decoration:none;color:var(--sea)}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--sea);background:var(--mist)}
+nav a.active{color:#fff;background:var(--sea)}
+.toggle{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center}
+.toggle span,.toggle span::before,.toggle span::after{display:block;width:20px;height:2px;background:var(--sea);position:relative;transition:transform .2s,background .2s}
+.toggle span::before,.toggle span::after{content:"";position:absolute;left:0}
+.toggle span::before{top:-6px}.toggle span::after{top:6px}
+.toggle[aria-expanded="true"] span{background:transparent}
+.toggle[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.toggle[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* 홈 */
+.hero{padding:72px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3.6rem,11vw,7rem);line-height:1.05;color:var(--sea);letter-spacing:-.02em}
+.hero .lead{margin-top:20px;font-size:1.15rem;color:var(--muted);max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--sea)}
+.btn.primary{background:var(--sea);color:#fff}
+.btn.primary:hover{background:var(--blue);border-color:var(--blue)}
+.btn.ghost:hover{background:var(--mist)}
+
+/* 겨루기 점수판 */
+.board{border-radius:18px;overflow:hidden;border:2px solid var(--sea);background:#fff;box-shadow:0 12px 0 var(--mist)}
+.board .row{padding:22px 24px;color:#fff}
+.board .row.b{background:var(--blue)}
+.board .row.r{background:var(--red)}
+.board .row small{display:block;font-size:.85rem;opacity:.85}
+.board .row strong{display:block;font-size:1.25rem;line-height:1.4;margin-top:2px}
+.board .foot{padding:14px 24px;background:var(--sea);color:#fff;font-size:.9rem}
+
+/* 공통 섹션 */
+section{padding:88px 0}
+section.alt{background:#fff;border-block:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.9rem,5vw,2.6rem);color:var(--sea);line-height:1.2;margin-bottom:12px}
+.sub{color:var(--muted);margin-bottom:40px;max-width:34em}
+
+/* 자기소개 */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about p{max-width:34em}
+.facts{display:grid;gap:0;border-top:2px solid var(--sea)}
+.facts div{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.facts dt{color:var(--muted);font-weight:500}
+.facts dd{font-weight:700}
+
+/* 역량 */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{padding:28px;border-radius:16px;background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--blue)}
+.card:nth-child(2){border-top-color:var(--red)}
+.card:nth-child(3){border-top-color:var(--sea)}
+.card h3{font-size:1.2rem;margin-bottom:8px;color:var(--sea)}
+.card p{color:var(--muted);font-size:.98rem}
+
+/* 프로젝트 */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.project{padding:26px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+.project h3{color:var(--sea);margin-bottom:8px}
+.project p{color:var(--muted);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags span{padding:3px 10px;border-radius:999px;background:var(--mist);font-size:.82rem;color:var(--sea)}
+.empty{padding:36px 28px;border:2px dashed var(--line);border-radius:16px;background:#fff;color:var(--muted);max-width:640px}
+.empty strong{display:block;color:var(--sea);font-size:1.1rem;margin-bottom:6px}
+
+/* 진로 */
+.goals{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.goal{padding:32px;border-radius:18px;color:#fff}
+.goal.b{background:var(--blue)}
+.goal.r{background:var(--red)}
+.goal h3{font-family:var(--display);font-weight:400;font-size:1.6rem;margin-bottom:10px}
+.goal p{opacity:.95}
+.path{margin-top:28px;padding:24px 28px;border-radius:16px;background:var(--mist);color:var(--sea);max-width:760px}
+
+footer{padding:36px 0;background:var(--sea);color:#cfe0e8;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* 반응형 */
+@media (max-width:820px){
+  .toggle{display:flex}
+  nav{position:absolute;left:0;right:0;top:64px;background:var(--paper);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;padding:12px 20px 20px;gap:4px}
+  nav a{padding:12px 14px;border-radius:10px}
+  .hero{padding:48px 0 64px}
+  .hero .wrap,.about,.goals{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  section{padding:64px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home">장지우</a>
+    <button class="toggle" id="toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <nav id="menu" aria-label="주 메뉴">
+      <ul>
+        <li><a href="#home">홈</a></li>
+        <li><a href="#about">자기소개</a></li>
+        <li><a href="#skills">역량</a></li>
+        <li><a href="#projects">프로젝트</a></li>
+        <li><a href="#career">진로</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div>
+        <h1>장지우</h1>
+        <p class="lead">레저해양스포츠학과에서 운동을 공부하고, 건강운동관리사와 재활치료사를 목표로 준비하고 있습니다.</p>
+        <div class="cta">
+          <a class="btn primary" href="#about">자기소개 보기</a>
+          <a class="btn ghost" href="#career">진로 보기</a>
+        </div>
+      </div>
+      <div class="board" aria-label="요약">
+        <div class="row b"><small>전공</small><strong>레저해양스포츠학과</strong></div>
+        <div class="row r"><small>목표</small><strong>건강운동관리사 · 재활치료사</strong></div>
+        <div class="foot">경험: 태권도 겨루기 선수 준비</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="about">
+    <div class="wrap">
+      <h2>자기소개</h2>
+      <p class="sub">운동을 좋아하는 학생이자, 운동으로 사람을 돕고 싶은 예비 전문가입니다.</p>
+      <div class="about">
+        <div>
+          <p>안녕하세요, 레저해양스포츠학과에 재학 중인 장지우입니다. 운동에 대한 관심을 바탕으로 전공을 공부하고 있습니다.</p>
+          <p style="margin-top:14px">태권도 겨루기 선수를 준비한 경험이 있으며, 맡은 일을 끝까지 해내는 책임감을 가장 큰 강점으로 생각합니다.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>이름</dt><dd>장지우</dd></div>
+          <div><dt>전공</dt><dd>레저해양스포츠학과</dd></div>
+          <div><dt>관심분야</dt><dd>운동</dd></div>
+          <div><dt>경험</dt><dd>태권도 겨루기 선수 준비</dd></div>
+          <div><dt>목표</dt><dd>건강운동관리사, 재활치료사</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>역량</h2>
+      <p class="sub">전공과 경험에서 쌓아 온 강점입니다.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>책임감</h3>
+          <p>맡은 일을 끝까지 책임지고 해내는 태도를 가장 큰 강점으로 생각합니다.</p>
+        </article>
+        <article class="card">
+          <h3>겨루기 선수 준비 경험</h3>
+          <p>태권도 겨루기 선수를 준비하며 운동을 직접 몸으로 경험했습니다.</p>
+        </article>
+        <article class="card">
+          <h3>운동에 대한 관심</h3>
+          <p>운동을 좋아하는 마음으로 레저해양스포츠학을 전공하고 있습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="projects">
+    <div class="wrap">
+      <h2>프로젝트</h2>
+      <p class="sub">수행한 프로젝트와 활동을 정리하는 공간입니다.</p>
+      <div class="projects" id="projectList"></div>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="wrap">
+      <h2>진로</h2>
+      <p class="sub">운동 지식을 건강과 회복을 돕는 일로 이어가려고 합니다.</p>
+      <div class="goals">
+        <article class="goal b">
+          <h3>건강운동관리사</h3>
+          <p>운동 지식을 바탕으로 사람들이 건강하게 운동하도록 돕는 전문가가 되는 것이 목표입니다.</p>
+        </article>
+        <article class="goal r">
+          <h3>재활치료사</h3>
+          <p>다친 사람이 다시 일상과 운동으로 돌아오도록 돕는 전문가가 되는 것이 목표입니다.</p>
+        </article>
+      </div>
+      <p class="path">레저해양스포츠학과의 전공 공부와 선수 준비 경험을 두 목표의 밑바탕으로 삼고 있습니다.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>장지우 포트폴리오</span>
+    <span id="year"></span>
+  </div>
+</footer>
+
+<script>
+/* 프로젝트를 추가하려면 아래 목록에 항목을 넣으세요.
+   예: {title:"프로젝트 이름", desc:"설명", tags:["태그1","태그2"]} */
+const PROJECTS = [];
+
+(function(){
+  const list = document.getElementById('projectList');
+  if(!PROJECTS.length){
+    const box = document.createElement('div');
+    box.className = 'empty';
+    const s = document.createElement('strong');
+    s.textContent = '아직 등록된 프로젝트가 없습니다';
+    const p = document.createElement('span');
+    p.textContent = '이 파일의 PROJECTS 목록에 제목과 설명을 추가하면 이곳에 카드로 표시됩니다.';
+    box.append(s,p);
+    list.appendChild(box);
+  } else {
+    PROJECTS.forEach(function(item){
+      const a = document.createElement('article');
+      a.className = 'project';
+      const h = document.createElement('h3');
+      h.textContent = item.title;
+      const d = document.createElement('p');
+      d.textContent = item.desc || '';
+      a.append(h,d);
+      if(item.tags && item.tags.length){
+        const t = document.createElement('div');
+        t.className = 'tags';
+        item.tags.forEach(function(x){const sp=document.createElement('span');sp.textContent=x;t.appendChild(sp);});
+        a.appendChild(t);
+      }
+      list.appendChild(a);
+    });
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* 모바일 메뉴 */
+  const toggle = document.getElementById('toggle');
+  const menu = document.getElementById('menu');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  }
+  toggle.addEventListener('click', function(){setMenu(!menu.classList.contains('open'));});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click', function(){setMenu(false);});});
+  document.addEventListener('keydown', function(e){if(e.key==='Escape'){setMenu(false);}});
+  window.addEventListener('resize', function(){if(window.innerWidth>820){setMenu(false);}});
+
+  /* 현재 섹션 표시 */
+  const links = Array.from(menu.querySelectorAll('a'));
+  const sections = links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        links.forEach(function(l){l.classList.toggle('active', l.getAttribute('href')==='#'+en.target.id);});
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  sections.forEach(function(s){if(s){io.observe(s);}});
+})();
+</script>
+</body>
+</html>
